@@ -16,4 +16,16 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    //pneumatics
+    public static final int solenoid1port = 0;
+    public static final int solenoid2port = 1;
+    public static final int solenoid3port = 3;
+
+    // drivetrain
+    public static final int leftMotor1 = 0;
+    public static final int leftMotor2 = 1;
+    public static final int leftMotor3 = 2;
+    public static final int rightMotor1 = 3;
+    public static final int rightMotor2 = 4;
+    public static final int rightMotor3 = 5;
 }
