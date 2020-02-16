@@ -8,6 +8,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.commands.BasicArcadeDrive;
+import frc.robot.commands.ColorWheelPivotPID;
+import frc.robot.commands.ColorWheelPosition1;
+import frc.robot.commands.ColorWheelPosition2;
+import frc.robot.commands.ColorWheelPosition3;
+import frc.robot.subsystems.ColorWheel;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Pneumatics;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -22,6 +30,11 @@ public class RobotContainer {
   Pneumatics pneumatics = new Pneumatics();
   Drivetrain drivetrain = new Drivetrain();
   BasicArcadeDrive basicArcadeDrive = new BasicArcadeDrive(driverController.getRawAxis(1), driverController.getRawAxis(5), drivetrain);
+  ColorWheel colorWheel = new ColorWheel();
+  ColorWheelPivotPID colorWheelPivotPID = new ColorWheelPivotPID(colorWheel);
+  ColorWheelPosition1 colorWheelPosition1 = new ColorWheelPosition1(colorWheelPivotPID);
+  ColorWheelPosition2 colorWheelPosition2 = new ColorWheelPosition2(colorWheelPivotPID);
+  ColorWheelPosition3 colorWheelPosition3 = new ColorWheelPosition3(colorWheelPivotPID);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

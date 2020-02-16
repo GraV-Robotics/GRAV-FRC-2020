@@ -28,4 +28,10 @@ public final class Constants {
     public static final int rightMotor1 = 3;
     public static final int rightMotor2 = 4;
     public static final int rightMotor3 = 5;
+
+    //ColorWheel
+    public static final int colorWheelMotorPivot = 6;
+    public static final int colorWheelMotorLeft = 7;
+    public static final int colorwheelMotorRight = 8;
+    public static final int colorWheelEncoder[] = {1, 2};
 }

@@ -8,23 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Drivetrain;
 
-public class BasicArcadeDrive extends CommandBase {
+public class ColorWheelSpin extends CommandBase {
   /**
-   * Creates a new BasicArcadeDrive.
+   * Creates a new ColorWheelSpin.
    */
-  double forward;
-  double turn;
-  Drivetrain drivetrain;
-
-  public BasicArcadeDrive(double f, double t, Drivetrain dt) {
+  public ColorWheelSpin() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(dt);
-
-    forward = f;
-    turn = t;
-    drivetrain = dt;
   }
 
   // Called when the command is initially scheduled.
@@ -35,7 +25,6 @@ public class BasicArcadeDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.ArcadeDrive(forward, turn);
   }
 
   // Called once the command ends or is interrupted.
