@@ -29,9 +29,11 @@ public final class Constants {
     public static final int rightMotor2 = 4;
     public static final int rightMotor3 = 5;
 
-    //ColorWheel
-    public static final int colorWheelMotorPivot = 6;
-    public static final int colorWheelMotorLeft = 7;
-    public static final int colorwheelMotorRight = 8;
-    public static final int colorWheelEncoder[] = {1, 2};
+    //Intake
+    public static final int intakeDriveMotor = 6;
+    public static final int intakePivotMotor = 7; 
+
+    //Sensors
+    public static final int limitSwitch1 = 4;
+    public static final int limitSwitch2 = 5;
 }

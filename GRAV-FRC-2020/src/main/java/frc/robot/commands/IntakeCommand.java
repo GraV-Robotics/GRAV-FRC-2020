@@ -8,13 +8,23 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Intake;
 
-public class ColorWheelPosition3 extends CommandBase {
+public class IntakeCommand extends CommandBase {
   /**
-   * Creates a new ColorWheelPosition3.
+   * Creates a new IntakeCommand.
    */
-  public ColorWheelPosition3() {
+
+   boolean up, down, intakeBall;
+   Intake intake;
+
+  public IntakeCommand(boolean u, boolean d, boolean iB, Intake i) {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(i);
+    intake = i;
+    up = u;
+    down = d;
+    intakeBall = iB;
   }
 
   // Called when the command is initially scheduled.
@@ -25,6 +35,9 @@ public class ColorWheelPosition3 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    intake.IntakeDrive(intakeBall);
+    intake.IntakePivotUp(up);
+    intake.IntakePivotDown(down);
   }
 
   // Called once the command ends or is interrupted.
