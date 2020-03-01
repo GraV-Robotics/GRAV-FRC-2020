@@ -36,7 +36,7 @@ public class ThrottleShiftingCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    throttleShift();    
   }
 
   // Called once the command ends or is interrupted.
@@ -55,12 +55,13 @@ public class ThrottleShiftingCommand extends CommandBase {
   }
 
   public void throttleShift(){
-    double encoder1Rate, encoder2Rate;
-    if(throttleCheck() >= Constants.thresholdPercentLowGearFPS && !pneumatics.getShiftState()){
-
+    if(throttleCheck() >= 0.8 && pneumatics.getShiftState() == false){
       pneumatics.shiftDrive(true);
-
-
+      driveTrain.ArcadeDrive(((1-Constants.thresholdPercentHighGear) / 0.2 )*(forward-0.8) + Constants.thresholdPercentHighGear, turn/(1-Constants.thresholdPercentHighGear));
+    }
+    else{
+      pneumatics.shiftDrive(false);
+      driveTrain.ArcadeDrive(forward, turn);
     }
   }
 }

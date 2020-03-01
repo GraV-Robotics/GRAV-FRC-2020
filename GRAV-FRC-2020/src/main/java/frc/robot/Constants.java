@@ -36,6 +36,7 @@ public final class Constants {
     public static final double lowGearMaxFPS = 9.86;
     public static final double highGearMaxFPS = 25.34; 
     public static final double thresholdPercentLowGearFPS = lowGearMaxFPS * 0.8;
+    public static final double thresholdPercentHighGear = thresholdPercentLowGearFPS/highGearMaxFPS;
 
     //Intake
     public static final int intakeDriveMotor = 6;
