@@ -44,6 +44,7 @@ public class Drivetrain extends SubsystemBase {
     rightMotor2.set(ControlMode.PercentOutput, rightPower);
     rightMotor3.set(ControlMode.PercentOutput, rightPower);
   }
+  
 
   @Override
   public void periodic() {
