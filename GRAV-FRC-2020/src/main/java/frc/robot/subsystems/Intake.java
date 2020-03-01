@@ -37,6 +37,9 @@ public class Intake extends SubsystemBase {
   public void IntakeDrive(boolean intakeBall){
     if(intakeBall == true){
       intakeDriveMotor.set(ControlMode.PercentOutput, 1);
+    }
+    else{
+      intakeDriveMotor.set(ControlMode.PercentOutput, 0);
     }    
   }
 
