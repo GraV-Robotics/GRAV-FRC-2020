@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -23,6 +25,7 @@ public class Drivetrain extends SubsystemBase {
   TalonSRX rightMotor1;
   TalonSRX rightMotor2;
   TalonSRX rightMotor3;
+  Encoder encoder1, encoder2;
 
   public Drivetrain() {
     leftMotor1 = new TalonSRX(Constants.leftMotor1);
@@ -31,6 +34,9 @@ public class Drivetrain extends SubsystemBase {
     rightMotor1 = new TalonSRX(Constants.rightMotor1);
     rightMotor2 = new TalonSRX(Constants.rightMotor2);
     rightMotor3 = new TalonSRX(Constants.rightMotor3);
+    encoder1 = new Encoder(Constants.encoder1[0], Constants.encoder1[1], true);
+    encoder2 = new Encoder(Constants.encoder2[0], Constants.encoder2[1], true);
+
   }
 
   public void ArcadeDrive(double forward, double turn) {
@@ -44,7 +50,22 @@ public class Drivetrain extends SubsystemBase {
     rightMotor2.set(ControlMode.PercentOutput, rightPower);
     rightMotor3.set(ControlMode.PercentOutput, rightPower);
   }
+
+  public double getEncoder1Rate(){
+    return encoder1.getRate();
+  } 
   
+  public double getEncoder2Rate(){
+    return encoder2.getRate();
+  }
+
+  public double getEncoder1Position(){
+    return encoder1.get();
+  }
+
+  public double getEncoder2Position(){
+    return encoder2.get();
+  }
 
   @Override
   public void periodic() {

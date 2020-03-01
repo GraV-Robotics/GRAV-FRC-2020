@@ -30,6 +30,12 @@ public final class Constants {
     public static final int rightMotor1 = 3;
     public static final int rightMotor2 = 4;
     public static final int rightMotor3 = 5;
+    public static final int encoder1[] = {0,1};
+    public static final int encoder2[] = {2,3};
+    public static final double encoderRate80Percent = 0.0;
+    public static final double lowGearMaxFPS = 9.86;
+    public static final double highGearMaxFPS = 25.34; 
+    public static final double thresholdPercentLowGearFPS = lowGearMaxFPS * 0.8;
 
     //Intake
     public static final int intakeDriveMotor = 6;

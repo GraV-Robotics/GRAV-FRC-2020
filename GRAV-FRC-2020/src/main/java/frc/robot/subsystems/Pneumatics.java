@@ -50,6 +50,10 @@ public class Pneumatics extends SubsystemBase {
 
   }
 
+  public boolean getShiftState(){
+    return shiftingSolenoid.get();
+  }
+
 
   @Override
   public void periodic() {

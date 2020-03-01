@@ -10,7 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.BasicArcadeDrive;
 import frc.robot.commands.IntakeCommandGroup;
-import frc.robot.commands.IntakeSpinUpCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Pneumatics;
