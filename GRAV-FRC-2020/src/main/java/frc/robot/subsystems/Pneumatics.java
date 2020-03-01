@@ -36,8 +36,18 @@ public class Pneumatics extends SubsystemBase {
 
   public int pressureCheck(){
     double voltage = pressureSensorLow.getAverageVoltage();
-    int psi = (int) Math.round(voltage * ((200) / (4.5 - 0.5)) + 0.5);
+    int psi = (int) Math.round((voltage - 0.5) * 50);
     return psi;
+  }
+
+  public void shiftDrive(boolean state){
+    if(state && pressureCheck() >= 30){      
+        shiftingSolenoid.set(true);            
+    }
+    else{
+      shiftingSolenoid.set(false);
+    }
+
   }
 
 
