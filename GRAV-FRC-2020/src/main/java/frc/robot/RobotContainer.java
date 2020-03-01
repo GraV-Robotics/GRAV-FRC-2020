@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.BasicArcadeDrive;
+import frc.robot.commands.IntakeCommandGroup;
 import frc.robot.commands.IntakeSpinUpCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
@@ -28,7 +29,7 @@ public class RobotContainer {
   Drivetrain drivetrain = new Drivetrain();
   Intake intake = new Intake();
   BasicArcadeDrive basicArcadeDrive = new BasicArcadeDrive(driverController.getRawAxis(1), driverController.getRawAxis(5), drivetrain);
-  IntakeSpinUpCommand intakeSpinUpCommand = new IntakeSpinUpCommand(intake);
+  IntakeCommandGroup intakeCommandGroup = new IntakeCommandGroup(intake);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

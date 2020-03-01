@@ -8,7 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.subsystems.Intake;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -17,10 +17,11 @@ public class IntakeCommandGroup extends SequentialCommandGroup {
   /**
    * Creates a new IntakeCommandGroup.
    */
-  Subsystem Intake;
-  public IntakeCommandGroup() {
+  
+  public IntakeCommandGroup(Intake i) {    
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super();
+    super(new IntakePivotCommand(i), new IntakeSpinUpCommand(i));
+    addRequirements(i);
   }
 }

@@ -10,35 +10,32 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
 
-public class IntakeSpinUpCommand extends CommandBase {
+public class IntakePivotCommand extends CommandBase {
   /**
-   * Creates a new IntakeCommand.
+   * Creates a new IntakePivotCommand.
    */
-
-   
-   Intake intake;
-
-  public IntakeSpinUpCommand(Intake i) {
+  Intake intake;
+  public IntakePivotCommand(Intake i) {
     // Use addRequirements() here to declare subsystem dependencies.
-    intake = i;    
-    
+    intake = i;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
- 
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.IntakeDrive(true);
+    intake.IntakePivotState(true);
+    
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intake.IntakeDrive(false);
+    intake.IntakePivotState(false);
   }
 
   // Returns true when the command should end.

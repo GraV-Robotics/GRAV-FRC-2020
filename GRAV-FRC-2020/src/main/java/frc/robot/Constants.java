@@ -17,9 +17,11 @@ package frc.robot;
  */
 public final class Constants {
     //pneumatics
-    public static final int solenoid1port = 0;
+    public static final int shiftingSolenoid = 0;
     public static final int solenoid2port = 1;
     public static final int solenoid3port = 3;
+    public static final int analogPressureSensor1 = 0;
+    public static final int analogPressureSensor2 = 1;
 
     // drivetrain
     public static final int leftMotor1 = 0;
@@ -31,9 +33,10 @@ public final class Constants {
 
     //Intake
     public static final int intakeDriveMotor = 6;
-    public static final int intakePivotMotor = 7; 
-
-    //Sensors
+    public static final int intakePivotMotor = 7;     
     public static final int limitSwitch1 = 4;
     public static final int limitSwitch2 = 5;
+
+
+    
 }

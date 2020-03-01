@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,19 +18,28 @@ public class Pneumatics extends SubsystemBase {
    * Creates a new Pneumatics.
    */
   Compressor compressor;
-  Solenoid solenoid1;
+  Solenoid shiftingSolenoid;
   Solenoid solenoid2;
   Solenoid solenoid3;
+  AnalogInput pressureSensorLow, pressureSensorHigh;
 
    public Pneumatics() {
      compressor = new Compressor(0);
-     solenoid1 = new Solenoid(Constants.solenoid1port);
+     shiftingSolenoid = new Solenoid(Constants.shiftingSolenoid);
      solenoid2 = new Solenoid(Constants.solenoid2port);
      solenoid3 = new Solenoid(Constants.solenoid3port);
+     pressureSensorLow = new AnalogInput(Constants.analogPressureSensor1);
+     pressureSensorHigh = new AnalogInput(Constants.analogPressureSensor2);
 
     compressor.start();
-
   }
+
+  public int pressureCheck(){
+    double voltage = pressureSensorLow.getAverageVoltage();
+    int psi = (int) Math.round(voltage * ((200) / (4.5 - 0.5)) + 0.5);
+    return psi;
+  }
+
 
   @Override
   public void periodic() {

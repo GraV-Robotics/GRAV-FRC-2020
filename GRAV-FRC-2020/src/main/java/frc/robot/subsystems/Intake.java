@@ -43,23 +43,19 @@ public class Intake extends SubsystemBase {
     }    
   }
 
-  public void IntakePivotUp(boolean up){
-    if(up == true && limitSwitch1.get() == false){
+  public void IntakePivotState(boolean state){
+    if(state == true && limitSwitch1.get() == false){
       intakePivotMotor.set(ControlMode.PercentOutput, 0.5);
+    }
+    else if(state == false && limitSwitch2.get() == false){
+      intakePivotMotor.set(ControlMode.PercentOutput, - 0.5);
     }
     else{
       intakePivotMotor.set(ControlMode.PercentOutput, 0);
     }    
   }
 
-  public void IntakePivotDown(boolean down){
-    if(down == true && limitSwitch2.get() == false){
-      intakePivotMotor.set(ControlMode.PercentOutput, -0.5);
-    }
-    else{
-      intakePivotMotor.set(ControlMode.PercentOutput, 0);
-    }
-  }
+  
 
   @Override
   public void periodic() {
