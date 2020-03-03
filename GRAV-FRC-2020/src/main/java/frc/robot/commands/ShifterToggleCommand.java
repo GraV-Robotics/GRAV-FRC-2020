@@ -8,26 +8,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Pneumatics;
 
-public class ThrottleShiftingCommand extends CommandBase {
+public class ShifterToggleCommand extends CommandBase {
   /**
-   * Creates a new ThrottleShiftingCommand.
+   * Creates a new ShifterToggleCommand.
    */
+  ThrottleShiftingCommand throttleShiftingCommand;
   Drivetrain driveTrain;
-  Pneumatics pneumatics;
-  double forward;
-  double turn;
-  double percentMaxRPS;
-  public ThrottleShiftingCommand(Drivetrain d, Pneumatics p, double f, double t, double pmr){
+  boolean shifterThrottle;
+  public ShifterToggleCommand(Drivetrain dt, ThrottleShiftingCommand tsc, boolean st) {
     // Use addRequirements() here to declare subsystem dependencies.
-    driveTrain = d;
-    pneumatics = p;
-    forward = f;
-    turn = t;
-    percentMaxRPS = pmr;
+    driveTrain = dt;
+    shifterThrottle = st;
   }
 
   // Called when the command is initially scheduled.
@@ -38,7 +31,7 @@ public class ThrottleShiftingCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    throttleShift(percentMaxRPS);    
+    
   }
 
   // Called once the command ends or is interrupted.
@@ -50,20 +43,5 @@ public class ThrottleShiftingCommand extends CommandBase {
   @Override
   public boolean isFinished() {
     return false;
-  }
-
-  public double throttleCheck(){
-    return Math.abs(forward*100);
-  }
-
-  public void throttleShift(double percent){
-    if(throttleCheck() >= 0.8 && pneumatics.getShiftState() == false && Math.abs(driveTrain.getEncoder1Rate()) >= percent*11837.44 && Math.abs(driveTrain.getEncoder2Rate()) >= percent*11837.44){
-      pneumatics.shiftDrive(true);
-      driveTrain.ArcadeDrive(((1-Constants.thresholdPercentHighGear) / 0.2 )*(forward-0.8) + Constants.thresholdPercentHighGear, turn/(1-Constants.thresholdPercentHighGear));
-    }
-    else{
-      pneumatics.shiftDrive(false);
-      driveTrain.ArcadeDrive(forward, turn);
-    }
   }
 }

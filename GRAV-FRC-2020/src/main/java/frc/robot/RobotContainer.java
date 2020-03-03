@@ -33,7 +33,7 @@ public class RobotContainer {
   Climber climber = new Climber();
   BasicArcadeDrive basicArcadeDrive = new BasicArcadeDrive(driverController.getRawAxis(1), driverController.getRawAxis(5), drivetrain);
   IntakeCommandGroup intakeCommandGroup = new IntakeCommandGroup(intake);
-  ThrottleShiftingCommand throttleShiftingCommand = new ThrottleShiftingCommand(drivetrain, pneumatics, driverController.getRawAxis(1), driverController.getRawAxis(5));
+  ThrottleShiftingCommand throttleShiftingCommand = new ThrottleShiftingCommand(drivetrain, pneumatics, driverController.getRawAxis(1), driverController.getRawAxis(5), 0.8);
   ClimberHookCommand climberHookCommand = new ClimberHookCommand(climber, driverController.getRawButton(3), driverController.getRawButton(4));
   ClimberWinchCommand climberWinchCommand = new ClimberWinchCommand(climber);
   /**
