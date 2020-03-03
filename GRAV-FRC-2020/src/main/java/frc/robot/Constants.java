@@ -44,6 +44,12 @@ public final class Constants {
     public static final int limitSwitch1 = 4;
     public static final int limitSwitch2 = 5;
 
+    //Climber
+    public static final int hookMotor1 = 8;
+    public static final int hookMotor2 = 9;
+    public static final int winchMotor1 = 10;
+    public static final int winchMotor2 = 11;
+
 
     
 }
