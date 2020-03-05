@@ -7,58 +7,43 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.subsystems.Climber;
 
-public class ClimberWinchCommand extends CommandBase {
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+
+public class ShifterToggleEndCommand extends InstantCommand {
   /**
-   * Creates a new ClimberWinchCommand.
+   * Creates a new ShifterToggleCommand.
    */
-  Climber climber;
-  boolean climberToggle;
-  double ultraSonicDistance;
-  double climberHeight = (climber.getUltraSonic1Voltage()*0.997)/25.4;
-  public ClimberWinchCommand(Climber c) {
+  ThrottleShiftingCommand throttleShiftingCommand;
+  public ShifterToggleEndCommand(ThrottleShiftingCommand tsc) {
     // Use addRequirements() here to declare subsystem dependencies.
-    climber = c;   
-    
-    
+    throttleShiftingCommand = tsc;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
+   
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    climber.winchDrive(true);
-    climberWinchToggle(climberHeight);
   }
+
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    climber.winchDrive(false);
+    throttleShiftingCommand.end(true);
+    
   }
+
 
   // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return climberToggle;
-  }
+  
 
-  public boolean climberWinchToggle(double distance){
-    if(distance >= 20){
-      climberToggle = true;
-      return climberToggle; 
-    }
-    else{
-      climberToggle = false;
-      return climberToggle;
-    }
-  }
+  
+  
 }

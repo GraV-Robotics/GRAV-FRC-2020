@@ -49,6 +49,10 @@ public final class Constants {
     public static final int hookMotor2 = 9;
     public static final int winchMotor1 = 10;
     public static final int winchMotor2 = 11;
+    public static final int analogUltraSonicSensor1 = 2;
+
+    //Feeder
+    public static int feederMotor1 = 12;
 
 
     

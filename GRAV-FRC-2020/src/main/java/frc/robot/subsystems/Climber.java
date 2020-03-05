@@ -8,8 +8,9 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -17,14 +18,16 @@ public class Climber extends SubsystemBase {
   /**
    * Creates a new Climber.
    */
-  TalonSRX hookMotor1, hookMotor2, winchMotor1, winchMotor2;
+  VictorSPX hookMotor1, hookMotor2, winchMotor1, winchMotor2;
+  AnalogInput analogUltraSonicSensor1;
   public Climber() {
-    hookMotor1 = new TalonSRX(Constants.hookMotor1);
-    hookMotor2 = new TalonSRX(Constants.hookMotor2);
-    winchMotor1 = new TalonSRX(Constants.winchMotor1);
-    winchMotor2 = new TalonSRX(Constants.winchMotor2);
+    hookMotor1 = new VictorSPX(Constants.hookMotor1);
+    hookMotor2 = new VictorSPX(Constants.hookMotor2);
+    winchMotor1 = new VictorSPX(Constants.winchMotor1);
+    winchMotor2 = new VictorSPX(Constants.winchMotor2);
     hookMotor1.setInverted(true);
     winchMotor1.setInverted(true);
+    analogUltraSonicSensor1 = new AnalogInput(Constants.analogUltraSonicSensor1);
   }
 
   @Override
@@ -58,4 +61,8 @@ public class Climber extends SubsystemBase {
       winchMotor2.set(ControlMode.PercentOutput, 0);
     }
   }
+
+  public double getUltraSonic1Voltage(){
+    return analogUltraSonicSensor1.getVoltage();
+  } 
 }

@@ -8,9 +8,10 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -19,29 +20,32 @@ public class Drivetrain extends SubsystemBase {
    * Creates a new Drivetrain.
    */
 
-  TalonSRX leftMotor1;
-  TalonSRX leftMotor2;
-  TalonSRX leftMotor3;
-  TalonSRX rightMotor1;
-  TalonSRX rightMotor2;
-  TalonSRX rightMotor3;
+  VictorSPX leftMotor1;
+  VictorSPX leftMotor2;
+  VictorSPX leftMotor3;
+  VictorSPX rightMotor1;
+  VictorSPX rightMotor2;
+  VictorSPX rightMotor3;
   Encoder encoder1, encoder2;
+  AHRS navx;
 
   public Drivetrain() {
-    leftMotor1 = new TalonSRX(Constants.leftMotor1);
-    leftMotor2 = new TalonSRX(Constants.leftMotor2);
-    leftMotor3 = new TalonSRX(Constants.leftMotor3);
-    rightMotor1 = new TalonSRX(Constants.rightMotor1);
-    rightMotor2 = new TalonSRX(Constants.rightMotor2);
-    rightMotor3 = new TalonSRX(Constants.rightMotor3);
+    leftMotor1 = new VictorSPX(Constants.leftMotor1);
+    leftMotor2 = new VictorSPX(Constants.leftMotor2);
+    leftMotor3 = new VictorSPX(Constants.leftMotor3);
+    rightMotor1 = new VictorSPX(Constants.rightMotor1);
+    rightMotor2 = new VictorSPX(Constants.rightMotor2);
+    rightMotor3 = new VictorSPX(Constants.rightMotor3);
     encoder1 = new Encoder(Constants.encoder1[0], Constants.encoder1[1], true);
     encoder2 = new Encoder(Constants.encoder2[0], Constants.encoder2[1], true);
+    navx = new AHRS(Port.kMXP);
 
   }
 
   public void ArcadeDrive(double forward, double turn) {
     double leftPower = forward+turn;
     double rightPower = forward-turn;
+    
     
     leftMotor1.set(ControlMode.PercentOutput, leftPower);
     leftMotor2.set(ControlMode.PercentOutput, leftPower);
@@ -66,6 +70,12 @@ public class Drivetrain extends SubsystemBase {
   public double getEncoder2Position(){
     return encoder2.get();
   }
+
+  public void navxCalibrate(){
+  
+  }
+
+  
 
   @Override
   public void periodic() {

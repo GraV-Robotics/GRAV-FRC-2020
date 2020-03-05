@@ -8,19 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 
-public class ShifterToggleCommand extends CommandBase {
+public class ShifterToggleExecuteCommand extends InstantCommand {
   /**
-   * Creates a new ShifterToggleCommand.
+   * Creates a new ShifterToggleExecuteCommand.
    */
   ThrottleShiftingCommand throttleShiftingCommand;
-  Drivetrain driveTrain;
-  boolean shifterThrottle;
-  public ShifterToggleCommand(Drivetrain dt, ThrottleShiftingCommand tsc, boolean st) {
+  public ShifterToggleExecuteCommand(ThrottleShiftingCommand tsc) {
+    throttleShiftingCommand = tsc;
     // Use addRequirements() here to declare subsystem dependencies.
-    driveTrain = dt;
-    shifterThrottle = st;
   }
 
   // Called when the command is initially scheduled.
@@ -31,17 +28,13 @@ public class ShifterToggleCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    throttleShiftingCommand.execute();
   }
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+ 
 }
