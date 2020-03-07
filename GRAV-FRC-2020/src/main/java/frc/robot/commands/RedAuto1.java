@@ -7,18 +7,26 @@
 
 package frc.robot.commands;
 
+import java.io.IOException;
+import java.nio.file.Path;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.trajectory.Trajectory;
+import edu.wpi.first.wpilibj.trajectory.TrajectoryUtil;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
-public class BasicArcadeDrive extends CommandBase {
+public class RedAuto1 extends CommandBase {
   /**
    * Creates a new BasicArcadeDrive.
    */
+  String trajectoryJSON = "paths/BottomPort.wpilib.json"; 
   double forward;
   double turn;
   Drivetrain drivetrain;
 
-  public BasicArcadeDrive(double f, double t, Drivetrain dt) {
+  public RedAuto1(double f, double t, Drivetrain dt) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(dt);
 
@@ -35,7 +43,13 @@ public class BasicArcadeDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.ArcadeDrive(forward, turn);
+    try{
+      Path trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
+      Trajectory trajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
+    }
+    catch(IOException ex){
+      DriverStation.reportError("Unable to open trajectory: " + trajectoryJSON, ex.getStackTrace());
+    }
   }
 
   // Called once the command ends or is interrupted.
