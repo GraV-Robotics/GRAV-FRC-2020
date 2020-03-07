@@ -36,12 +36,19 @@ public class Climber extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void hookDrive(boolean hookUp, boolean hookDown){
-    if(hookUp && !hookDown){
+  public void hookDriveUp(boolean hookUp){
+    if(hookUp){
       hookMotor1.set(ControlMode.PercentOutput, 0.75);
       hookMotor2.set(ControlMode.PercentOutput, 0.75);
+    }    
+    else{
+      hookMotor1.set(ControlMode.PercentOutput, 0);
+      hookMotor2.set(ControlMode.PercentOutput, 0);
     }
-    else if(hookDown && !hookUp){
+  }
+  
+  public void hookDriveDown(boolean hookDown){
+    if(hookDown){
       hookMotor1.set(ControlMode.PercentOutput, -0.75);
       hookMotor2.set(ControlMode.PercentOutput, -0.75);
     }
@@ -49,7 +56,7 @@ public class Climber extends SubsystemBase {
       hookMotor1.set(ControlMode.PercentOutput, 0);
       hookMotor2.set(ControlMode.PercentOutput, 0);
     }
-  } 
+  }
 
   public void winchDrive(boolean winchUp){
     if(winchUp){

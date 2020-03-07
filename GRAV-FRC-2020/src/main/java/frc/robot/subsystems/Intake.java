@@ -20,16 +20,16 @@ public class Intake extends SubsystemBase {
    */
   VictorSPX intakeDriveMotor;
   VictorSPX intakePivotMotor;
-  DigitalInput limitSwitch1;
-  DigitalInput limitSwitch2;
+  DigitalInput limitSwitchDown;
+  DigitalInput limitSwitchUp;
 
    
 
   public Intake() {
     intakeDriveMotor = new VictorSPX(Constants.intakeDriveMotor);
     intakePivotMotor = new VictorSPX(Constants.intakePivotMotor);
-    limitSwitch1 = new DigitalInput(Constants.limitSwitch1);
-    limitSwitch2 = new DigitalInput(Constants.limitSwitch2);
+    limitSwitchDown = new DigitalInput(Constants.limitSwitchDown);
+    limitSwitchUp = new DigitalInput(Constants.limitSwitchUp);
     
 
   }
@@ -44,10 +44,10 @@ public class Intake extends SubsystemBase {
   }
 
   public void IntakePivotState(boolean state){
-    if(state == true && limitSwitch1.get() == false){
+    if(state == true && limitSwitchDown.get() == false){
       intakePivotMotor.set(ControlMode.PercentOutput, 0.5);
     }
-    else if(state == false && limitSwitch2.get() == false){
+    else if(state == false && limitSwitchUp.get() == false){
       intakePivotMotor.set(ControlMode.PercentOutput, - 0.5);
     }
     else{

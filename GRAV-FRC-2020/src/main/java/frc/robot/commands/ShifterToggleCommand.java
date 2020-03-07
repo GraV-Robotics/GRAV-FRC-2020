@@ -8,41 +8,42 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Climber;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 
-public class ClimberHookCommand extends CommandBase {
+public class ShifterToggleCommand extends CommandBase {
   /**
-   * Creates a new ClimberHookCommand.
+   * Creates a new ShifterToggleExecuteCommand.
    */
-
-  Climber climber;
-  boolean hookUp, hookDown; 
-  public ClimberHookCommand(Climber c, boolean hu, boolean hd){
+  ThrottleShiftingCommand throttleShiftingCommand;
+  public ShifterToggleCommand(ThrottleShiftingCommand tsc) {
+    throttleShiftingCommand = tsc;
     // Use addRequirements() here to declare subsystem dependencies.
-    climber = c;
-    hookUp = hu;
-    hookDown = hd;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    climber.hookDrive(hookUp, hookDown);
+    throttleShiftingCommand.end(true);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    throttleShiftingCommand.execute();
   }
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;
   }
+
+  
+
+ 
 }

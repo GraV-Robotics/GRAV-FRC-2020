@@ -7,23 +7,24 @@
 
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.Drivetrain;
 
-public class ClimberWinchCommand extends CommandBase {
+public class BasicArcadeDrive extends CommandBase {
   /**
-   * Creates a new ClimberWinchCommand.
+   * Creates a new BasicArcadeDrive.
    */
-  Climber climber;
-  boolean climberToggle;
-  double ultraSonicDistance;
-  double climberHeight = (climber.getUltraSonic1Voltage()*0.997)/25.4;
-  public ClimberWinchCommand(Climber c) {
+  double forward;
+  double turn;
+  Drivetrain drivetrain;
+
+  public BasicArcadeDrive(double f, double t, Drivetrain dt) {
     // Use addRequirements() here to declare subsystem dependencies.
-    climber = c;   
-    
-    
+    addRequirements(dt);
+
+    forward = f;
+    turn = t;
+    drivetrain = dt;
   }
 
   // Called when the command is initially scheduled.
@@ -34,30 +35,17 @@ public class ClimberWinchCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    climber.winchDrive(true);
-    climberWinchToggle(climberHeight);
+    drivetrain.ArcadeDrive(forward, turn);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    climber.winchDrive(false);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return climberToggle;
-  }
-
-  public boolean climberWinchToggle(double distance){
-    if(distance >= 20){
-      climberToggle = true;
-      return climberToggle; 
-    }
-    else{
-      climberToggle = false;
-      return climberToggle;
-    }
+    return false;
   }
 }

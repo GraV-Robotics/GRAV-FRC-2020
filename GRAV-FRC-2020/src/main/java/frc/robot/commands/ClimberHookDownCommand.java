@@ -7,23 +7,18 @@
 
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Climber;
 
-public class ClimberWinchCommand extends CommandBase {
+public class ClimberHookDownCommand extends CommandBase {
   /**
-   * Creates a new ClimberWinchCommand.
+   * Creates a new ClimberHookCommand.
    */
-  Climber climber;
-  boolean climberToggle;
-  double ultraSonicDistance;
-  double climberHeight = (climber.getUltraSonic1Voltage()*0.997)/25.4;
-  public ClimberWinchCommand(Climber c) {
+
+  Climber climber; 
+  public ClimberHookDownCommand(Climber c){
     // Use addRequirements() here to declare subsystem dependencies.
-    climber = c;   
-    
-    
+    climber = c;
   }
 
   // Called when the command is initially scheduled.
@@ -34,30 +29,18 @@ public class ClimberWinchCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    climber.winchDrive(true);
-    climberWinchToggle(climberHeight);
+    climber.hookDriveDown(true);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    climber.winchDrive(false);
+    climber.hookDriveDown(false);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return climberToggle;
-  }
-
-  public boolean climberWinchToggle(double distance){
-    if(distance >= 20){
-      climberToggle = true;
-      return climberToggle; 
-    }
-    else{
-      climberToggle = false;
-      return climberToggle;
-    }
+    return false;
   }
 }

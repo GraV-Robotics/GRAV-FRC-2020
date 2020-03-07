@@ -41,8 +41,8 @@ public final class Constants {
     //Intake
     public static final int intakeDriveMotor = 6;
     public static final int intakePivotMotor = 7;     
-    public static final int limitSwitch1 = 4;
-    public static final int limitSwitch2 = 5;
+    public static final int limitSwitchUp = 4;
+    public static final int limitSwitchDown = 5;
 
     //Climber
     public static final int hookMotor1 = 8;
