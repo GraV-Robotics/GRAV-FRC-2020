@@ -20,7 +20,7 @@ public class Feeder extends SubsystemBase {
   VictorSPX feederMotor;
   boolean shootBall;
   public Feeder() {
-    feederMotor = new VictorSPX(Constants.feederMotor1);
+    feederMotor = new VictorSPX(Constants.feederMotor);
   }
 
   public void feederDrive(boolean shootBall){

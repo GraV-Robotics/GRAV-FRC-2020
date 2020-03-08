@@ -20,8 +20,8 @@ public final class Constants {
     public static final int shiftingSolenoid = 0;
     public static final int solenoid2port = 1;
     public static final int solenoid3port = 3;
-    public static final int analogPressureSensor1 = 0;
-    public static final int analogPressureSensor2 = 1;
+    public static final int analogPressureSensorLow = 0;
+    public static final int analogPressureSensorHigh = 1;
 
     // drivetrain
     public static final int leftMotor1 = 0;
@@ -30,8 +30,8 @@ public final class Constants {
     public static final int rightMotor1 = 3;
     public static final int rightMotor2 = 4;
     public static final int rightMotor3 = 5;
-    public static final int encoder1[] = {0,1};
-    public static final int encoder2[] = {2,3};
+    public static final int leftEncoder[] = {0,1};
+    public static final int rightEncoder[] = {2,3};
     public static final double encoderRate80Percent = 0.0;
     public static final double lowGearMaxFPS = 9.86;
     public static final double highGearMaxFPS = 25.34; 
@@ -45,14 +45,13 @@ public final class Constants {
     public static final int limitSwitchDown = 5;
 
     //Climber
-    public static final int hookMotor1 = 8;
-    public static final int hookMotor2 = 9;
-    public static final int winchMotor1 = 10;
-    public static final int winchMotor2 = 11;
-    public static final int analogUltraSonicSensor1 = 2;
+    public static final int hookMotorLeft = 8;
+    public static final int hookMotorRight = 9;
+    public static final int winchMotor = 10;
+    public static final int analogUltraSonicSensor = 2;
 
     //Feeder
-    public static int feederMotor1 = 12;
+    public static int feederMotor = 11;
 
 
     

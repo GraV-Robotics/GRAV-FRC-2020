@@ -15,8 +15,9 @@ import frc.robot.commands.ClimberHookUpCommand;
 import frc.robot.commands.ClimberWinchCommand;
 import frc.robot.commands.FeederSpinUpCommand;
 import frc.robot.commands.IntakeCommandGroup;
+import frc.robot.commands.IntakePivotCommand;
+import frc.robot.commands.IntakeSpinUpCommand;
 import frc.robot.commands.ShifterToggleCommand;
-import frc.robot.commands.ShifterToggleExecuteCommand;
 import frc.robot.commands.ThrottleShiftingCommand;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivetrain;
@@ -33,18 +34,20 @@ import frc.robot.subsystems.Pneumatics;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public Joystick driverController = new Joystick(0);
-  public JoystickButton hookUp = new JoystickButton(driverController, 0);
-  public JoystickButton hookDown = new JoystickButton(driverController, 1);
-  public JoystickButton winchUp = new JoystickButton(driverController, 2);
-  public JoystickButton feederSpinUp = new JoystickButton(driverController, 3);
-  public JoystickButton shifterToggle = new JoystickButton(driverController, 4);
-  public JoystickButton intakeSpinUpPivot = new JoystickButton(driverController, 5);
+  public Joystick manipulatorController = new Joystick(1);
+  public JoystickButton hookUp = new JoystickButton(manipulatorController, 9);
+  public JoystickButton hookDown = new JoystickButton(manipulatorController, 10);
+  public JoystickButton winchUp = new JoystickButton(driverController, 8);
+  public JoystickButton feederSpinUp = new JoystickButton(manipulatorController, 1);
+  public JoystickButton shifterToggle = new JoystickButton(driverController, 5);
+  public JoystickButton intakeSpinUp = new JoystickButton(manipulatorController, 5);
+  public JoystickButton intakePivot = new JoystickButton(manipulatorController, 6);
   Pneumatics pneumatics = new Pneumatics();
   Drivetrain drivetrain = new Drivetrain();
   Intake intake = new Intake();
   Climber climber = new Climber();
   Feeder feeder = new Feeder();
-  BasicArcadeDrive basicArcadeDrive = new BasicArcadeDrive(driverController.getRawAxis(1), driverController.getRawAxis(5), drivetrain);
+  BasicArcadeDrive basicArcadeDrive = new BasicArcadeDrive(driverController.getRawAxis(1), driverController.getRawAxis(0), drivetrain);
  
   
   /**
@@ -62,7 +65,8 @@ public class RobotContainer {
     winchUp.toggleWhenPressed(new ClimberWinchCommand(climber));
     feederSpinUp.whileHeld(new FeederSpinUpCommand(feeder));
     shifterToggle.toggleWhenPressed(new ShifterToggleCommand(new ThrottleShiftingCommand(drivetrain, pneumatics, driverController.getRawAxis(1), driverController.getRawAxis(5), 0.8)));
-    intakeSpinUpPivot.whileHeld(new IntakeCommandGroup(intake));
+    intakeSpinUp.whileHeld(new IntakeSpinUpCommand(intake));
+    intakePivot.toggleWhenPressed(new IntakePivotCommand(intake));
 
   }
 

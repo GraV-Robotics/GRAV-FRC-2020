@@ -22,9 +22,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   private RobotContainer robotContainer;
-  AnalogInput pressureSensorLow, pressureSensorHigh, ultraSonicSensor1;
-  Encoder encoder1, encoder2;
-  DigitalInput limitSwitchDown, limitSwitchUp; 
+  // AnalogInput pressureSensorLow, pressureSensorHigh, ultraSonicSensor1;
+  // Encoder encoder1, encoder2;
+  // DigitalInput limitSwitchDown, limitSwitchUp; 
 
   
 
@@ -37,13 +37,13 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
-    encoder1 = new Encoder(Constants.encoder1[0], Constants.encoder1[1], true);
-    encoder2 = new Encoder(Constants.encoder2[0], Constants.encoder2[1], true);
-    pressureSensorLow = new AnalogInput(Constants.analogPressureSensor1);
-    pressureSensorHigh = new AnalogInput(Constants.analogPressureSensor2);
-    limitSwitchDown = new DigitalInput(Constants.limitSwitchDown);
-    limitSwitchUp = new DigitalInput(Constants.limitSwitchUp);
-    ultraSonicSensor1 = new AnalogInput(Constants.analogUltraSonicSensor1);
+    // encoder1 = new Encoder(Constants.encoder1[0], Constants.encoder1[1], true);
+    // encoder2 = new Encoder(Constants.encoder2[0], Constants.encoder2[1], true);
+    // pressureSensorLow = new AnalogInput(Constants.analogPressureSensor1);
+    // pressureSensorHigh = new AnalogInput(Constants.analogPressureSensor2);
+    // limitSwitchDown = new DigitalInput(Constants.limitSwitchDown);
+    // limitSwitchUp = new DigitalInput(Constants.limitSwitchUp);
+    // ultraSonicSensor1 = new AnalogInput(Constants.analogUltraSonicSensor1);
 
     
   }
@@ -62,16 +62,16 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-    SmartDashboard.putNumber("Encoder 1 Rate", encoder1.getRate());
-    SmartDashboard.putNumber("Encoder 2 Rate", encoder2.getRate());
-    SmartDashboard.putNumber("Pressure Sensor Low Average Voltage", pressureSensorLow.getAverageVoltage());
-    SmartDashboard.putNumber("Pressure Sensor Low PSI", (int) Math.round((pressureSensorLow.getAverageVoltage() - 0.5) * 50));
-    SmartDashboard.putNumber("Pressure Sensor High Average Voltage", pressureSensorHigh.getAverageVoltage());
-    SmartDashboard.putNumber("Pressure Sensor High PSI", (int) Math.round((pressureSensorHigh.getAverageVoltage() - 0.5) * 50));
-    SmartDashboard.putBoolean("Limit Switch Down", limitSwitchDown.get());
-    SmartDashboard.putBoolean("Limit Switch Up", limitSwitchUp.get());
-    SmartDashboard.putNumber("Ultra Sonic Sensor 1 Voltage", ultraSonicSensor1.getVoltage());
-    SmartDashboard.putNumber("Ultra Sonic Sensor 1 Distance",(ultraSonicSensor1.getVoltage()*0.997)/25.4);
+    // SmartDashboard.putNumber("Encoder 1 Rate", encoder1.getRate());
+    // SmartDashboard.putNumber("Encoder 2 Rate", encoder2.getRate());
+    // SmartDashboard.putNumber("Pressure Sensor Low Average Voltage", pressureSensorLow.getAverageVoltage());
+    // SmartDashboard.putNumber("Pressure Sensor Low PSI", (int) Math.round((pressureSensorLow.getAverageVoltage() - 0.5) * 50));
+    // SmartDashboard.putNumber("Pressure Sensor High Average Voltage", pressureSensorHigh.getAverageVoltage());
+    // SmartDashboard.putNumber("Pressure Sensor High PSI", (int) Math.round((pressureSensorHigh.getAverageVoltage() - 0.5) * 50));
+    // SmartDashboard.putBoolean("Limit Switch Down", limitSwitchDown.get());
+    // SmartDashboard.putBoolean("Limit Switch Up", limitSwitchUp.get());
+    // SmartDashboard.putNumber("Ultra Sonic Sensor 1 Voltage", ultraSonicSensor1.getVoltage());
+    // SmartDashboard.putNumber("Ultra Sonic Sensor 1 Distance",(ultraSonicSensor1.getVoltage()*0.997)/25.4);
 
 
 

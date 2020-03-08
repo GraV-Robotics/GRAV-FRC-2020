@@ -28,20 +28,25 @@ public class Pneumatics extends SubsystemBase {
      shiftingSolenoid = new Solenoid(Constants.shiftingSolenoid);
      solenoid2 = new Solenoid(Constants.solenoid2port);
      solenoid3 = new Solenoid(Constants.solenoid3port);
-     pressureSensorLow = new AnalogInput(Constants.analogPressureSensor1);
-     pressureSensorHigh = new AnalogInput(Constants.analogPressureSensor2);
+     pressureSensorLow = new AnalogInput(Constants.analogPressureSensorLow);
+     pressureSensorHigh = new AnalogInput(Constants.analogPressureSensorHigh);
 
     compressor.start();
   }
 
-  public int pressureCheck(){
+  public int getLowPressure(){
     double voltage = pressureSensorLow.getAverageVoltage();
     int psi = (int) Math.round((voltage - 0.5) * 50);
     return psi;
   }
 
+  public int getHighPressure() {
+    double voltage = pressureSensorHigh.getAverageVoltage();
+    return (int) Math.round((voltage - 0.5) * 50);
+  }
+
   public void shiftDrive(boolean state){
-    if(state && pressureCheck() >= 30){      
+    if(state && getLowPressure() >= 30){      
         shiftingSolenoid.set(true);            
     }
     else{

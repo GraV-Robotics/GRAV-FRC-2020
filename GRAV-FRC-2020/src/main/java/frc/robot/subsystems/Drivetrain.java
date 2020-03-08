@@ -27,7 +27,7 @@ public class Drivetrain extends SubsystemBase {
   VictorSPX rightMotor1;
   VictorSPX rightMotor2;
   VictorSPX rightMotor3;
-  Encoder encoder1, encoder2;
+  Encoder leftEncoder, rightEncoder;
   AHRS navx;
 
   public Drivetrain() {
@@ -37,8 +37,8 @@ public class Drivetrain extends SubsystemBase {
     rightMotor1 = new VictorSPX(Constants.rightMotor1);
     rightMotor2 = new VictorSPX(Constants.rightMotor2);
     rightMotor3 = new VictorSPX(Constants.rightMotor3);
-    encoder1 = new Encoder(Constants.encoder1[0], Constants.encoder1[1], true);
-    encoder2 = new Encoder(Constants.encoder2[0], Constants.encoder2[1], true);
+    leftEncoder = new Encoder(Constants.leftEncoder[0], Constants.leftEncoder[1], true);
+    rightEncoder = new Encoder(Constants.rightEncoder[0], Constants.rightEncoder[1], true);
     navx = new AHRS(Port.kMXP);
 
   }
@@ -57,23 +57,23 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public double getEncoder1Rate(){
-    return encoder1.getRate();
+    return leftEncoder.getRate();
   } 
   
   public double getEncoder2Rate(){
-    return encoder2.getRate();
+    return rightEncoder.getRate();
   }
 
   public double getEncoder1Position(){
-    return encoder1.get();
+    return leftEncoder.get();
   }
 
   public double getEncoder2Position(){
-    return encoder2.get();
+    return rightEncoder.get();
   }
 
   public void navxCalibrate(){
-  
+    navx.reset();
   }
 
   
