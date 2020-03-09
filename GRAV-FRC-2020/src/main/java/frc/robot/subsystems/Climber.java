@@ -18,16 +18,15 @@ public class Climber extends SubsystemBase {
   /**
    * Creates a new Climber.
    */
-  VictorSPX hookMotor1, hookMotor2, winchMotor1, winchMotor2;
+  VictorSPX hookMotorLeft, hookMotorRight, winchMotor1, winchMotor2;
   AnalogInput analogUltraSonicSensor1;
   public Climber() {
-    hookMotor1 = new VictorSPX(Constants.hookMotor1);
-    hookMotor2 = new VictorSPX(Constants.hookMotor2);
-    winchMotor1 = new VictorSPX(Constants.winchMotor1);
-    winchMotor2 = new VictorSPX(Constants.winchMotor2);
-    hookMotor1.setInverted(true);
+    hookMotorLeft = new VictorSPX(Constants.hookMotorLeft);
+    hookMotorRight = new VictorSPX(Constants.hookMotorRight);
+    winchMotor1 = new VictorSPX(Constants.winchMotor);
+    hookMotorLeft.setInverted(true);
     winchMotor1.setInverted(true);
-    analogUltraSonicSensor1 = new AnalogInput(Constants.analogUltraSonicSensor1);
+    analogUltraSonicSensor1 = new AnalogInput(Constants.analogUltraSonicSensor);
   }
 
   @Override
@@ -38,23 +37,23 @@ public class Climber extends SubsystemBase {
 
   public void hookDriveUp(boolean hookUp){
     if(hookUp){
-      hookMotor1.set(ControlMode.PercentOutput, 0.75);
-      hookMotor2.set(ControlMode.PercentOutput, 0.75);
+      hookMotorLeft.set(ControlMode.PercentOutput, 0.75);
+      hookMotorRight.set(ControlMode.PercentOutput, 0.75);
     }    
     else{
-      hookMotor1.set(ControlMode.PercentOutput, 0);
-      hookMotor2.set(ControlMode.PercentOutput, 0);
+      hookMotorLeft.set(ControlMode.PercentOutput, 0);
+      hookMotorRight.set(ControlMode.PercentOutput, 0);
     }
   }
   
   public void hookDriveDown(boolean hookDown){
     if(hookDown){
-      hookMotor1.set(ControlMode.PercentOutput, -0.75);
-      hookMotor2.set(ControlMode.PercentOutput, -0.75);
+      hookMotorLeft.set(ControlMode.PercentOutput, -0.75);
+      hookMotorRight.set(ControlMode.PercentOutput, -0.75);
     }
     else{
-      hookMotor1.set(ControlMode.PercentOutput, 0);
-      hookMotor2.set(ControlMode.PercentOutput, 0);
+      hookMotorLeft.set(ControlMode.PercentOutput, 0);
+      hookMotorRight.set(ControlMode.PercentOutput, 0);
     }
   }
 
