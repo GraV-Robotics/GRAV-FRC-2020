@@ -47,7 +47,8 @@ public class RobotContainer {
   Intake intake = new Intake();
   Climber climber = new Climber();
   Feeder feeder = new Feeder();
-  BasicArcadeDrive basicArcadeDrive = new BasicArcadeDrive(driverController.getRawAxis(1), driverController.getRawAxis(0), drivetrain);
+  // BasicArcadeDrive basicArcadeDrive = new BasicArcadeDrive(driverController.getRawAxis(1), driverController.getRawAxis(0), drivetrain);
+  ThrottleShiftingCommand throttleShiftingCommand = new ThrottleShiftingCommand(drivetrain, pneumatics, driverController.getRawAxis(1), driverController.getRawAxis(0), 0.80);
  
   
   /**

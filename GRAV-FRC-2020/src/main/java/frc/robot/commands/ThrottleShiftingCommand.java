@@ -57,9 +57,9 @@ public class ThrottleShiftingCommand extends CommandBase {
   }
 
   public void throttleShift(double percent){
-    if(throttleCheck() >= 0.8 && pneumatics.getShiftState() == false && Math.abs(driveTrain.getEncoder1Rate()) >= percent*11837.44 && Math.abs(driveTrain.getEncoder2Rate()) >= percent*11837.44){
+    if(throttleCheck() >= percent && pneumatics.getShiftState() == false && Math.abs(driveTrain.getEncoder1Rate()) >= percent*11837.44 && Math.abs(driveTrain.getEncoder2Rate()) >= percent*11837.44){
       pneumatics.shiftDrive(true);
-      driveTrain.ArcadeDrive(((1-Constants.thresholdPercentHighGear) / 0.2 )*(forward-0.8) + Constants.thresholdPercentHighGear, turn/(1-Constants.thresholdPercentHighGear));
+      driveTrain.ArcadeDrive(((1-Constants.thresholdPercentHighGear) / 0.2 )*(forward-percent) + Constants.thresholdPercentHighGear, turn/(1-Constants.thresholdPercentHighGear));
     }
     else{
       pneumatics.shiftDrive(false);

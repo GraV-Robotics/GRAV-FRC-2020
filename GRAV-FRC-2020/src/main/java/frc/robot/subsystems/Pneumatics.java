@@ -36,8 +36,7 @@ public class Pneumatics extends SubsystemBase {
 
   public int getLowPressure(){
     double voltage = pressureSensorLow.getAverageVoltage();
-    int psi = (int) Math.round((voltage - 0.5) * 50);
-    return psi;
+    return (int) Math.round((voltage - 0.5) * 50);
   }
 
   public int getHighPressure() {
